@@ -1,79 +1,162 @@
-/* styles.css */
+/* Base Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #0074D9;
-    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; /* Modern font stack */
+    background-color: #eaf5ef; /* Light background with better contrast */
+    margin: 0; /* Remove default browser margins */
+    padding: 0; /* Remove default browser padding */
+  }
+  
+  /* Header */
+  header {
+    background-color: #3498db; /* Vibrant blue header */
+    color: #fff; /* White text for readability */
     text-align: center;
     padding: 2rem;
-}
-
-h1 {
+  }
+  
+  h1 {
     font-size: 2.5rem;
-}
-
-p {
-    font-size: 1.2rem;
-}
-
-nav ul {
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.15rem; /* Slightly smaller for better hierarchy */
+    line-height: 1.6;
+    margin-bottom: 1rem; /* Introduce margin for paragraphs */
+    margin-left: 30px;
+  }
+  
+  /* Navigation */
+  nav {
+    background-color: #eee;
+    padding: 1rem 2rem; /* Add some horizontal padding */
+  }
+  
+  nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    padding: 0;
-}
-
-nav li {
-    margin-right: 1rem;
-}
-
-#hero {
+    justify-content: space-between;
+  }
   
-    background-image: url('path/to/your/stock-image.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 80vh;
-    animation: fadeIn 1s ease;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #FF4136;
-    color: #ffffff;
+  nav li {
+    margin: 0 1rem; /* Add some spacing between list items */
+  }
+  
+  nav a {
+    color: #333;
     text-decoration: none;
+  }
+  
+  nav a:hover {
+    text-decoration: underline; /* Subtle hover effect */
+  }
+  
+  /* Dropdown Menu (if using) */
+  .dropdown {
+    position: relative; /* Required for dropdown positioning */
+  }
+  
+  .dropdown-content {
+    display: none; /* Hide dropdown content initially */
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px; /* Set a minimum width */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Ensure dropdown is positioned above other content */
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown content on hover */
+  }
+  
+  .dropdown-content a {
+    color: black; /* Consistent text color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd; /* Light hover background */
+  }
+  
+  /* Sections */
+  section {
+    padding: 2rem 0; /* Consistent padding for sections */
+    border-bottom: 1px solid #ddd; /* Subtle divider line */
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Hero Section */
+  #hero {
+    text-align: center;
+    background-color: #f0f9ff; /* Light blue background */
+  }
+  
+  .hero-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .hero-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+  }
+  
+  /* About Section */
+  #about img {
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+    max-width: 50%;
+  }
+  
+  /* Features Section */
+  #features li {
+    display: flex;
+    align-items: center; /* Align text vertically within list items */
+    margin-bottom: 1rem;
+  }
+  
+  #features li p {
+    margin-left: 1rem; /* Add margin to text elements within features list */
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 25px;
 }
 
-.cta-button:hover {
-    background-color: #E63B2E;
+/* Hero Section */
+#hero {
+    background-color: #f0f9ff;
 }
+
+.hero-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.hero-button:hover {
+    background-color: #2980b9;
+}
+
+/* Footer */
 footer {
     background-color: #333;
-    color: #ffffff;
+    color: #fff;
     text-align: center;
     padding: 1rem;
-}
-#visualizer {
-    padding: 2rem;
-  
-}
-#features {
-    background-color: #f5f5f5;
-    padding: 2rem;
-}
-
-#features ul {
-    list-style: none;
-    padding: 0;
-}
-
-#features li {
-    margin-bottom: 1rem;
 }
