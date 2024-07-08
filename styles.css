@@ -60,3 +60,20 @@ footer {
     text-align: center;
     padding: 1rem;
 }
+#visualizer {
+    padding: 2rem;
+  
+}
+#features {
+    background-color: #f5f5f5;
+    padding: 2rem;
+}
+
+#features ul {
+    list-style: none;
+    padding: 0;
+}
+
+#features li {
+    margin-bottom: 1rem;
+}
