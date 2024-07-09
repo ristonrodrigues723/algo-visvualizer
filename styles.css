@@ -46,7 +46,7 @@ body {
   }
   
   nav li {
-    margin: 0 1rem; /* Add some spacing between list items */
+    margin: 0 1rem; 
   }
   
   nav a {
@@ -55,12 +55,12 @@ body {
   }
   
   nav a:hover {
-    text-decoration: underline; /* Subtle hover effect */
+    text-decoration: underline; 
   }
   
-  /* Dropdown Menu (if using) */
+
   .dropdown {
-    position: relative; /* Required for dropdown positioning */
+    position: relative; 
   }
   
   .dropdown-content {
@@ -69,7 +69,7 @@ body {
     background-color: #f1f1f1;
     min-width: 160px; /* Set a minimum width */
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1; /* Ensure dropdown is positioned above other content */
+    z-index: 1; /* Ensures dropdown is positioned above other content */
   }
   
   .dropdown:hover .dropdown-content {
@@ -153,9 +153,7 @@ body {
 /* Hero Section */
 #hero {
     background-color: #f0f9ff;
-    /* opacity: 0;
-    cursor: pointer;
-    transition: 0.25s all ease-in-out; */
+
 }
 
 /* .hero:hover {

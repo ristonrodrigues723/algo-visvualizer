@@ -57,24 +57,25 @@ push.addEventListener("click", () => {
     const itemValue = input.value; // Store the input value
     stack.push(itemValue); // Push the value into the stack
 
-   
+    // Creating a new element
+    const element = document.createElement("div");
+    element.classList.add("ele");
+    element.innerText = stack[stack.length - 1];
+    bucket.appendChild(element);
 
-    // Disable all buttons
+    box[0].innerHTML = stack[stack.length - 1];
+
+    input.value = "";
+    element.classList.add("ele-add");
+
     buttonDisable();
 
-    // After pushing the element
+
     setTimeout(() => {
-
-        // Remove the animation
         element.classList.remove("ele-add");
-
-        // Update the Last Pushed Item Value
         box[1].innerHTML = itemValue;
-
-        // Display the massage
         massage.innerHTML = `Item ${stack[stack.length - 1]} is Pushed.`;
 
-        // Enable all buttons
         buttonEnable();
     }, 1500);
 });
@@ -91,23 +92,15 @@ pop.addEventListener("click", () => {
         }, 1200);
         return;
     }
-
-    // Adding the popping animation
     bucket.lastElementChild.classList.add("ele-remove");
-
-
     buttonDisable();
 
 
     setTimeout(() => {
 
-
+        // Delete the element from the bucket
         bucket.removeChild(bucket.lastElementChild);
-
-
         const itemValue = stack.pop();
-
-
         box[2].innerHTML = itemValue;
 
         // Updating the Top
@@ -116,12 +109,27 @@ pop.addEventListener("click", () => {
         } else {
             box[0].innerHTML = stack[stack.length - 1];
         }
-
-
-
-        // Enable all buttons
+        massage.innerHTML = `Item ${itemValue} is Popped.`;
         buttonEnable();
     }, 1500);
 });
 
+// When the reset button will be clicked
+reset.addEventListener("click", () => {
 
+    // Clear the full array
+    while (stack.length > 0) {
+        stack.pop();
+    }
+
+    // Clear all fields
+    box[0].innerHTML = "";
+    box[1].innerHTML = "";
+    box[2].innerHTML = "";
+    massage.innerHTML = "";
+
+    // Clear all elements from the bucket
+    while (bucket.firstChild) {
+        bucket.removeChild(bucket.firstChild);
+    }
+});
