@@ -1,23 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stack.css">
   <title>Stack Implementation</title>
-  <style>
-  </style>
+  <link rel="stylesheet" href="stack.css">
 </head>
 <body>
   <div class="container">
+    <header>
+      <h1>Stack Implementation</h1>
+    </header>
     <div class="input-box">
-      <input type="text" id="input-value">
+      <input type="text" id="input-value" placeholder="Enter value">
       <button id="push-btn">Push</button>
       <button id="pop-btn">Pop</button>
+      <button id="reset-btn">Reset</button>
     </div>
     <div class="message" id="message"></div>
     <div class="stack" id="stack-list"></div>
+    <div class="top-element">
+      <span>Top:</span>
+      <span id="top-item"></span>
+    </div>
   </div>
   <script src="stack.js"></script>
 </body>
 </html>
+

@@ -11,15 +11,17 @@
     align-items: center;
     flex-direction: column;
     gap: 20px;
+    font-family: Arial, sans-serif; /* Add a default font */
   }
   .container {
     width: 500px;
-    height: 400px;
+    height: 500px;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    border-radius: 5px; /* Add rounded corners to the container */
   }
   .input-box {
     display: flex;
@@ -37,16 +39,25 @@
     border: 1px solid black;
     background-color: #ccc;
     cursor: pointer;
+    border-radius: 5px; /* Add rounded corners to buttons */
   }
   .message {
     height: 50px;
     width: 100%;
     text-align: center;
     font-weight: bold;
+    color: #333; /* Set a darker text color */
   }
   .stack {
     width: 100%;
     height: 200px;
     border: 1px solid black;
     padding: 10px;
+    overflow-y: scroll; /* Enable scrolling for long stacks */
   }
+  .top-element {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
