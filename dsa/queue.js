@@ -39,29 +39,74 @@ function updateQueueDisplay() {
     queueDisplay.appendChild(queueSize);
 }
 
-function updateFrontOfQueue() {
-    const frontBox = document.querySelector('.sec1 .box');
-    if (queue.length > 0) {
-        frontBox.textContent = queue[0];
-    } else {
-        frontBox.textContent = ''; // Clear if queue is empty
+
+function updateQueueDisplay() {
+    const queueDisplay = document.getElementById("queueDisplay");
+    queueDisplay.innerHTML = ""; // Clear previous queue contents
+  
+    // Display each element in the queue
+    for (const item of queue) {
+      const queueItem = document.createElement("div");
+      queueItem.classList.add("queue-item");
+      queueItem.textContent = item;
+      queueDisplay.appendChild(queueItem);
     }
+  
+    // Update "Front of Queue" and "Last Pushed Item" displays
+    const frontOfQueue = document.querySelector(".sec1 button");
+    frontOfQueue.textContent = queue.length > 0 ? queue[0] : "Empty"; // Display front item or "Empty"
+  
+    const lastPushedItem = document.querySelector(".sec2 button");
+    lastPushedItem.textContent = queue.length > 0 ? queue[queue.length - 1] : "Empty"; // Display last pushed item or "Empty"
+  
+   // Update "Last Popped Item" display
+  const lastPoppedItemButton = document.querySelector(".sec3 button");
+  lastPoppedItemButton.textContent = lastPoppedItem !== undefined ? lastPoppedItem : "Not Available";
+
+  // Update "Size of the Queue" display
+  const queueSize = document.querySelector(".sec4 button"); // Assuming the button has class "sec4"
+  queueSize.textContent = queue.length;
+    lastPoppedItem.textContent = poppedItem !== undefined ? poppedItem : "Not Available";
+  // Directly display the queue length
+  }
+
+
+let lastPoppedItem; 
+
+function updateQueueDisplay() {
+  const queueDisplay = document.getElementById("queueDisplay");
+  queueDisplay.innerHTML = ""; // Clear previous queue contents
+
+  // Display each element in the queue
+  for (const item of queue) {
+    const queueItem = document.createElement("div");
+    queueItem.classList.add("queue-item");
+    queueItem.textContent = item;
+    queueDisplay.appendChild(queueItem);
+  }
+
+  // Update "Front of Queue" and "Last Pushed Item" displays
+  const frontOfQueue = document.querySelector(".sec1 button");
+  frontOfQueue.textContent = queue.length > 0 ? queue[0] : "Empty"; 
+
+  const lastPushedItem = document.querySelector(".sec2 button");
+  lastPushedItem.textContent = queue.length > 0 ? queue[queue.length - 1] : "Empty"; 
+  // Update "Last Popped Item" display
+  const lastPoppedItemButton = document.querySelector(".sec3 button");
+  lastPoppedItemButton.textContent = lastPoppedItem !== undefined ? lastPoppedItem : "Not Available";
+
+  // Update "Size of the Queue" display
+  const queueSize = document.querySelector(".sec4 button"); // Assuming the button has class "sec4"
+  queueSize.textContent = queue.length;
 }
 
-function updateLastPushedItem() {
-    const lastPushedBox = document.querySelector('.sec2 .box');
-    if (queue.length > 0) {
-        lastPushedBox.textContent = queue[queue.length - 1];
-    } else {
-        lastPushedBox.textContent = ''; // Clear if queue is empty
-    }
+function popFromQueue() {
+  if (queue.length > 0) {
+    lastPoppedItem = queue.shift(); // Store the popped item and remove it from the queue
+    updateQueueDisplay();
+  } else {
+    displayMessage("Queue is empty. Nothing to pop.");
+  }
 }
 
-function updateLastPoppedItem() {
-    const lastPoppedBox = document.querySelector('.sec3 .box');
-    if (queue.length > 1) {
-        lastPoppedBox.textContent = queue[1];
-    } else {
-        lastPoppedBox.textContent = ''; // Clear if queue has only one or no items
-    }
-}
+
