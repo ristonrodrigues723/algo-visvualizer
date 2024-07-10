@@ -38,3 +38,30 @@ function updateQueueDisplay() {
     queueSize.textContent = `Queue Size: ${queue.length}`;
     queueDisplay.appendChild(queueSize);
 }
+
+function updateFrontOfQueue() {
+    const frontBox = document.querySelector('.sec1 .box');
+    if (queue.length > 0) {
+        frontBox.textContent = queue[0];
+    } else {
+        frontBox.textContent = ''; // Clear if queue is empty
+    }
+}
+
+function updateLastPushedItem() {
+    const lastPushedBox = document.querySelector('.sec2 .box');
+    if (queue.length > 0) {
+        lastPushedBox.textContent = queue[queue.length - 1];
+    } else {
+        lastPushedBox.textContent = ''; // Clear if queue is empty
+    }
+}
+
+function updateLastPoppedItem() {
+    const lastPoppedBox = document.querySelector('.sec3 .box');
+    if (queue.length > 1) {
+        lastPoppedBox.textContent = queue[1];
+    } else {
+        lastPoppedBox.textContent = ''; // Clear if queue has only one or no items
+    }
+}
