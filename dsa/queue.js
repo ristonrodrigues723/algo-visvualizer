@@ -6,15 +6,18 @@ function pushToQueue() {
     if (inputNumber && !isNaN(inputNumber)) {
         queue.push(inputNumber);
         updateQueueDisplay();
+        displayMessage(`Number ${inputNumber} was pushed to the queue.`);
     } else {
         displayMessage('Please enter a valid number.');
     }
+    document.getElementById('inputNumber').value = ''; // Clear input after push
 }
 
 function popFromQueue() {
     if (queue.length > 0) {
         lastPoppedItem = queue.shift();
         updateQueueDisplay();
+        displayMessage(`Number ${lastPoppedItem} was popped from the queue.`);
     } else {
         displayMessage("Queue is empty. Nothing to pop.");
     }
@@ -24,12 +27,17 @@ function clearQueue() {
     queue.length = 0;
     lastPoppedItem = undefined;
     updateQueueDisplay();
+    displayMessage("Queue has been cleared.");
 }
 
 function displayMessage(message) {
     const messageBox = document.querySelector('.massage-box');
-    const messageElement = messageBox.querySelector('.massage');
-    messageElement.textContent = message;
+    if (messageBox) {
+        const messageElement = messageBox.querySelector('.massage');
+        if (messageElement) {
+            messageElement.textContent = message;
+        }
+    }
 }
 
 function updateQueueDisplay() {
@@ -42,20 +50,20 @@ function updateQueueDisplay() {
             queueItem.textContent = item;
             queueDisplay.appendChild(queueItem);
         }
+    }
 
-        const frontOfQueue = document.querySelector(".sec1 button");
-        frontOfQueue.textContent = queue.length > 0 ? queue[0] : "Empty";
+    updateButtonText(".sec1 button", queue.length > 0 ? queue[0] : "Empty");
+    updateButtonText(".sec2 button", queue.length > 0 ? queue[queue.length - 1] : "Empty");
+    updateButtonText(".sec3 button", lastPoppedItem !== undefined ? lastPoppedItem : "Not Available");
+    updateButtonText(".sec4 button", queue.length.toString()); // Changed to .sec4
+}
 
-        const lastPushedItem = document.querySelector(".sec2 button");
-        lastPushedItem.textContent = queue.length > 0 ? queue[queue.length - 1] : "Empty";
-
-        const lastPoppedItemButton = document.querySelector(".sec3 button");
-        lastPoppedItemButton.textContent = lastPoppedItem !== undefined ? lastPoppedItem : "Not Available";
-
-        const queueSizeButton = document.querySelector(".sec3:last-of-type button");
-        queueSizeButton.textContent = queue.length.toString();
+function updateButtonText(selector, text) {
+    const button = document.querySelector(selector);
+    if (button) {
+        button.textContent = text;
     } else {
-        console.error("queueDisplay element not found!");
+        console.error(`Button not found for selector: ${selector}`);
     }
 }
 
