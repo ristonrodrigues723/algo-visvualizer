@@ -36,6 +36,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap; /* Wrap items to the next line if needed */
     gap: 5px;
+    margin-top: -75px;
 }
 
 .queue-item {
@@ -44,8 +45,6 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    margin-bottom: 25px;
-    
 }
 
 .container {
@@ -94,7 +93,7 @@ button:hover {
   }
   
   .info-container {
-    margin-top: 50px;
+    margin-top: 220px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -102,6 +101,10 @@ button:hover {
     flex-wrap: wrap;
 }
   
+title {
+    text-align: center;
+    color: #3498db;
+}
 
 h3 {
     font-size: 25px;

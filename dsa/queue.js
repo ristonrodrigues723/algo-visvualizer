@@ -39,7 +39,7 @@ function updateQueueDisplay() {
  
 }
 
-
+s
 function updateQueueDisplay() {
   const queueDisplay = document.getElementById("queueDisplay");
   if (queueDisplay) { // Check if element exists
@@ -66,6 +66,54 @@ function updateQueueDisplay() {
     // Update "Size of the Queue" display
     const queueSize = document.querySelector(".sec4 button"); // Assuming the button has class "sec4"
     queueSize.textContent = queue.length;
+  } else {
+    console.error("queueDisplay element not found!");
+  }
+}
+
+
+
+
+function updateQueueDisplay() {
+  const queueDisplay = document.getElementById("queueDisplay");
+  if (queueDisplay) { // Check if element exists
+    queueDisplay.innerHTML = ""; // Clear previous queue contents
+
+    // Display each element in the queue
+    for (const item of queue) {
+      const queueItem = document.createElement('div');
+      queueItem.classList.add('queue-item');
+      queueItem.textContent = item;
+      queueDisplay.appendChild(queueItem);
+    }
+
+  } else {
+    console.error("queueDisplay element not found!");
+  }
+}
+
+
+
+function displayMessage(message) {
+  const messageBox = document.querySelector('.message-box');
+  const messageElement = messageBox.querySelector('.message');
+  messageElement.textContent = message; // Update the message content
+}
+
+function updateQueueDisplay() {
+  const queueDisplay = document.getElementById("queueDisplay");
+  if (queueDisplay) { // Check if element exists
+    queueDisplay.innerHTML = ""; // Clear previous queue contents
+
+    // Display each element in the queue
+    for (const item of queue) {
+      const queueItem = document.createElement('div');
+      queueItem.classList.add('queue-item');
+      queueItem.textContent = item;
+      queueDisplay.appendChild(queueItem);
+    }
+
+
   } else {
     console.error("queueDisplay element not found!");
   }
