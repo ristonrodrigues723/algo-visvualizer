@@ -106,3 +106,55 @@ input, button {
     flex-wrap: wrap;
 }
   
+ 
+.push,
+.pop,
+.reset,
+.box {
+    height: 100px;
+    width: 140px;
+    font-size: 25px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+}
+.disable-button {
+    background-color: rgb(0, 59, 0);
+}
+
+.container-header button:active {
+    transform: scale(0.95);
+}
+.container-body {
+    width: 1000px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.massage-box {
+    height: 50px;
+    width: 400px;
+    font-size: 25px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 5px;
+    border: 1px solid black;
+}
+
+.array-element {
+    width: 40px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
