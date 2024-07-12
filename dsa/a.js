@@ -27,8 +27,8 @@ function addElement() {
         myArray.push(element);
         updateArrayVisualization();
         input.value = '';
-        // Update the "Last Pushed Item" message
-        document.getElementById('lastPushedItem').textContent = element;
+        // Update the message box
+        updateMessageBox(`Added element: ${element}`);
     }
 }
 
@@ -37,27 +37,26 @@ function removeElement() {
     if (myArray.length > 0) {
         const removedElement = myArray.pop();
         updateArrayVisualization();
-        // Update the "Last Popped Item" message
-        document.getElementById('lastPoppedItem').textContent = removedElement;
+        // Update the message box
+        updateMessageBox(`Removed element: ${removedElement}`);
+    } else {
+        updateMessageBox("Cannot remove: Array is empty");
     }
-}
-
-// Function to clear the entire array
-function clearArray() {
-    myArray = []; // Clear the array
-    updateArrayVisualization();
-    // Reset other messages
-    document.getElementById('frontOfQueue').textContent = 'Empty';
-    document.getElementById('lastPushedItem').textContent = 'Empty';
-    document.getElementById('lastPoppedItem').textContent = 'Not Available';
-    document.getElementById('queueSize').textContent = '0';
 }
 
 // Function to update display messages
 function updateDisplayMessages() {
-    document.getElementById('frontOfQueue').textContent = myArray.length > 0 ? myArray[0] : 'Empty';
-    document.getElementById('lastPushedItem').textContent = myArray.length > 0 ? myArray[myArray.length - 1] : 'Empty';
-    document.getElementById('queueSize').textContent = myArray.length;
+    const boxes = document.querySelectorAll('.info-container .box');
+    boxes[0].textContent = myArray.length > 0 ? myArray[0] : 'Empty';
+    boxes[1].textContent = myArray.length > 0 ? myArray[myArray.length - 1] : 'Empty';
+    boxes[2].textContent = myArray.length > 0 ? myArray[myArray.length - 1] : 'Not Available';
+    boxes[3].textContent = myArray.length;
+}
+
+// Function to update the message box
+function updateMessageBox(message) {
+    const messageBox = document.querySelector('.massage');
+    messageBox.textContent = message;
 }
 
 // Generate a random color for array elements
