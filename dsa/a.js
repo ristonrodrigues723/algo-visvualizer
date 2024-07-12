@@ -5,7 +5,7 @@ let myArray = [];
 function updateArrayVisualization() {
     const arrayContainer = document.getElementById('arrayContainer');
     arrayContainer.innerHTML = '';
-
+    
     myArray.forEach((element, index) => {
         const elementDiv = document.createElement('div');
         elementDiv.classList.add('array-element');
@@ -13,7 +13,7 @@ function updateArrayVisualization() {
         elementDiv.style.backgroundColor = getRandomColor();
         arrayContainer.appendChild(elementDiv);
     });
-
+    
     // Update display messages
     updateDisplayMessages();
 }
@@ -22,11 +22,13 @@ function updateArrayVisualization() {
 function addElement() {
     const input = document.getElementById('elementInput');
     const element = input.value.trim();
-
+    
     if (element !== '') {
         myArray.push(element);
         updateArrayVisualization();
         input.value = '';
+        // Update the "Last Pushed Item" message
+        document.getElementById('lastPushedItem').textContent = element;
     }
 }
 
