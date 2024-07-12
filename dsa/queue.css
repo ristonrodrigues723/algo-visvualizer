@@ -60,9 +60,19 @@ button:hover {
 
 .bob{
     height: 50px;
-    position: relative;
-    margin-bottom: 55px;
+  
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 10px;
 }
+
+
 .container-header {
     height: 90px;
     width: 100%;
