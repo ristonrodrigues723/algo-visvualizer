@@ -49,13 +49,27 @@ function updateDisplayMessages() {
     const boxes = document.querySelectorAll('.info-container .box');
     boxes[0].textContent = myArray.length > 0 ? myArray[0] : 'Empty';
     boxes[1].textContent = myArray.length > 0 ? myArray[myArray.length - 1] : 'Empty';
-    boxes[2].textContent = myArray.length > 0 ? myArray[myArray.length - 1] : 'Not Available';
+    boxes[2].textContent = 'Not Available'; // This will be updated in removeElement function
     boxes[3].textContent = myArray.length;
+}
+
+// Function to remove an element from the array
+function removeElement() {
+    if (myArray.length > 0) {
+        const removedElement = myArray.pop();
+        updateArrayVisualization();
+        // Update the message box
+        updateMessageBox(`Removed element: ${removedElement}`);
+        // Update the "Last removed Item" display
+        document.querySelectorAll('.info-container .box')[2].textContent = removedElement;
+    } else {
+        updateMessageBox("Cannot remove: Array is empty");
+    }
 }
 
 // Function to update the message box
 function updateMessageBox(message) {
-    const messageBox = document.querySelector('.massage');
+    const messageBox = document.getElementById('messageContent');
     messageBox.textContent = message;
 }
 
