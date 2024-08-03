@@ -515,10 +515,28 @@ p {
 /* Features Section */
 #features ul {
   display: flex;
-  flex-wrap: wrap;
+ 
   justify-content: center;
   list-style: none;
-  padding: 0;
+
+}
+
+.explore-button-2 {
+  align-items: center;
+  background-color: #34495e;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  justify-content: space-between;
+    align-items: center;
 }
 
 #features li {
@@ -527,7 +545,7 @@ p {
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(33 31 31 / 40%);
   transition: transform 0.3s ease;
 }
 
