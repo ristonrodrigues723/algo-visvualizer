@@ -130,55 +130,6 @@ nav a:hover {
          
 
 
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #000;
-        color: #fff;
-        margin: 0;
-        padding: 20px;
-    }
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-    .card {
-        background-color: rgba(255,255,255,0.1);
-        border-radius: 10px;
-        padding: 20px;
-        width: 300px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        backdrop-filter: blur(5px);
-        transition: transform 0.3s ease;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-    }
-    .card img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-        margin-bottom: 15px;
-    }
-    .card h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-    .card p {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-    .heart {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: rgba(255,255,255,0.8);
-        font-size: 20px;
-    }
-
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
