@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Merge Sort Visualization</title>
+    <link rel="stylesheet" href="m.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="\index.html">Home</a></li>
+            <li><a href="m.html" class="active">Merge Sort</a></li>
+            <li><a href="i.html">Insertion Sort</a></li>
+            <li><a href="\remaining-sort-algos/index.html">Heap Sort</a></li>
+            <li><a href="r.html">Radix Sort</a></li>
+            <li><a href="#" class="active">Counting Sort</a></li>
+            <li><a href="q.html">Quick Sort</a></li>
+            <li><a href="b.html">Bubble Sort</a></li>
+            <li><a href="s.html">Selection Sort</a></li>
+            
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Enhanced Merge Sort Visualization</h1>
+        <div id="controls">
+            <label for="arraySize">Array Size:</label>
+            <input type="number" id="arraySize" min="4" max="20" value="8">
+            <button onclick="generateArray()">Generate Array</button>
+            <button onclick="addElement()">Add Element</button>
+            <button onclick="removeElement()">Remove Element</button>
+            <button onclick="startSort()">Sort</button>
+            <button onclick="stepSort()" id="stepButton" disabled>Step</button>
+            <button onclick="removeStep()" id="removeStepButton" disabled>Remove Step</button>
+        </div>
+        <div id="array-container"></div>
+        <div id="message-box">
+            <h3>Messages</h3>
+            <div id="messages"></div>
+        </div>
+    </div>
+    <script src="m.js"></script>
+</body>
+</html>

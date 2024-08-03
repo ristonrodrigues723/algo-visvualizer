@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubly Circular Linked List Visualization</title>
+    <link rel="stylesheet" href="doubly-circular.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">LinkedList Viz</a>
+            <ul class="nav-links">
+                <li><a href="\\\index.html">Home</a></li>
+                <li><a href="../index.html">Singly Linked List</a></li>
+                <li><a href="doubly.html">Doubly Linked List</a></li>
+                <li><a href="circular.html">Circular Linked List</a></li>
+                <li><a href="#" class="active">Doubly Circular Linked List</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Doubly Circular Linked List Visualization</h1>
+        
+        <div id="listContainer" class="list-container"></div>
+        <div class="controls">
+            
+            <input type="text" id="valueInput" placeholder="Enter value">
+            <input type="number" id="positionInput" placeholder="Enter position">
+            <button onclick="addNode()">Add Node</button>
+            <button onclick="insertNode()">Insert Node</button>
+            <button onclick="removeNode()">Remove Last</button>
+            <button onclick="deleteNode()">Delete Node</button>
+            <button onclick="searchNode()">Search Node</button>
+            <button onclick="reverseList()">Reverse List</button>
+            <button onclick="clearList()">Clear List</button>
+        </div>
+        <div class="node-info">
+            <div class="info-box" id="prevNodeInfo">
+                <h3>Previous Node</h3>
+                <p id="prevNodeValue"></p>
+            </div>
+            <div class="info-box" id="currentNodeInfo">
+                <h3>Current Node</h3>
+                <p id="currentNodeValue"></p>
+            </div>
+            <div class="info-box" id="nextNodeInfo">
+                <h3>Next Node</h3>
+                <p id="nextNodeValue"></p>
+            </div>
+        </div>
+        <div id="messageBox"></div>
+    </div>
+    <script src="doubly-circular.js"></script>
+</body>
+</html>

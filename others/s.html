@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Selection Sort Visualizer</title>
+    <link rel="stylesheet" href="s.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="\index.html">Home</a></li>
+            <li><a href="m.html">Merge Sort</a></li>
+            <li><a href="i.html">Insertion Sort</a></li>
+            <li><a href="\remaining-sort-algos/index.html">Heap Sort</a></li>
+            <li><a href="r.html"class="active">Radix Sort</a></li>
+            <li><a href="#" class="active">Counting Sort</a></li>
+            <li><a href="q.html">Quick Sort</a></li>
+            <li><a href="b.html">Bubble Sort</a></li>
+            <li><a href="s.html">Selection Sort</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Interactive Selection Sort Visualizer</h1>
+        <div id="controls">
+            <input type="number" id="numberInput" placeholder="Enter a number">
+            <button onclick="addNumber()">Add Number</button>
+            <button onclick="generateRandomArray()">Generate Random Array</button>
+            <button onclick="clearArray()">Clear Array</button>
+            <button onclick="runSelectionSort()">Run Selection Sort</button>
+        </div>
+        <div id="arrayContainer"></div>
+        <div id="stats">
+            <p>Array Size: <span id="arraySize">0</span></p>
+            <p>Comparisons: <span id="comparisons">0</span></p>
+            <p>Swaps: <span id="swaps">0</span></p>
+        </div>
+        <div id="messageContainer" class="message-container"></div>
+</div>
+    </div>
+    <script src="s.js"></script>
+</body>
+</html>

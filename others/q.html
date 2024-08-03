@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quicksort Visualizer</title>
+    <link rel="stylesheet" href="q.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="\index.html">Home</a></li>
+            <li><a href="m.html">Merge Sort</a></li>
+            <li><a href="i.html">Insertion Sort</a></li>
+            <li><a href="\remaining-sort-algos/index.html">Heap Sort</a></li>
+            <li><a href="r.html">Radix Sort</a></li>
+            <li><a href="c.html">Counting Sort</a></li>
+            <li><a href="#" class="active">Quick Sort</a></li>
+            <li><a href="b.html">Bubble Sort</a></li>
+            <li><a href="s.html">Selection Sort</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Interactive Quicksort Visualizer</h1>
+        <div class="controls">
+            <input type="number" id="numberInput" placeholder="Enter a number">
+            <button onclick="addNumber()">Add Number</button>
+            <button onclick="removeNumber()">Remove Number</button>
+            <button onclick="generateRandomArray()">Generate Random Array</button>
+            <button onclick="clearArray()">Clear Array</button>
+            <button onclick="runQuickSort()">Run Quicksort</button>
+        </div>
+        <div id="array-container"></div>
+        <div id="stats">
+            <p>Array Size: <span id="arraySize">0</span></p>
+            <p>Comparisons: <span id="comparisons">0</span></p>
+            <p>Swaps: <span id="swaps">0</span></p>
+        </div>
+        <div id="messageBox" class="message-box"></div>
+    </div>
+    <script src="q.js"></script>
+</body>
+</html>

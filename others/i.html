@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Insertion Sort Visualizer</title>
+    <link rel="stylesheet" href="i.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="\index.html">Home</a></li>
+            <li><a href="m.html" class="active">Merge Sort</a></li>
+            <li><a href="i.html">Insertion Sort</a></li>
+            <li><a href="\remaining-sort-algos/index.html">Heap Sort</a></li>
+            <li><a href="r.html">Radix Sort</a></li>
+            <li><a href="#" >Counting Sort</a></li>
+            <li><a href="q.html">Quick Sort</a></li>
+            <li><a href="b.html">Bubble Sort</a></li>
+            <li><a href="s.html">Selection Sort</a></li>
+           
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Enhanced Insertion Sort Visualizer</h1>
+        <div class="controls">
+            <label for="arraySize">Array Size:</label>
+            <input type="number" id="arraySize" min="5" max="50" value="20">
+            <label for="sortSpeed">Sort Speed:</label>
+            <input type="range" id="sortSpeed" min="1" max="100" value="50">
+            <button onclick="generateArray()">Generate New Array</button>
+            <div class="add-element-container">
+                <input type="number" id="newElement" min="1" max="100" placeholder="Enter a number (1-100)">
+                <button onclick="addElement()">Add Element</button>
+            </div>
+            <button onclick="removeElement()">Remove Last Element</button>
+            <button onclick="startSort()">Start Sort</button>
+            <button onclick="pauseSort()" id="pauseButton" disabled>Pause</button>
+            <button onclick="resetSort()">Reset</button>
+        </div>
+        <div id="array-container"></div>
+        <div id="info-container">
+            <p>Comparisons: <span id="comparisons">0</span></p>
+            <p>Swaps: <span id="swaps">0</span></p>
+            <p>Current State: <span id="currentState">Not sorting</span></p>
+        </div>
+        <div id="message-box">
+            <h3>Messages:</h3>
+            <div id="messages"></div>
+        </div>
+    </div>
+    <script src="i.js"></script>
+</body>
+</html>

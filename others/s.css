@@ -1,0 +1,213 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 20px rgb(128, 128, 128);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: #2c3e50;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 5px 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #34495e;
+}
+
+nav ul li a.active {
+    background-color: #3498db;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* ... (keep all the existing CSS) ... */
+
+#arrayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 300px;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.bar {
+    width: 20px;
+    margin: 0 1px;
+    background-color: #3498db;
+    transition: height 0.2s ease-in-out;
+}
+
+/* ... (keep all the remaining CSS) ... */
+.box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #3498db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: a2px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.selected {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+.found {
+    background-color: #2ecc71;
+}
+
+.not-found {
+    background-color: #e74c3c;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.controls input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+}
+
+.controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #2980b9;
+}
+
+.message-container {
+    width: 100%;
+    max-width: 850px;
+    border: 1px solid #3498db;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+}
+
+.message-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.message-box {
+    width: 100%;
+    max-width: 850px;
+    border: 1px solid #3498db;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Radix Sort Visualization</title>
+    <link rel="stylesheet" href="r.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="\index.html">Home</a></li>
+            <li><a href="m.html">Merge Sort</a></li>
+            <li><a href="i.html">Insertion Sort</a></li>
+            <li><a href="\remaining-sort-algos/index.html">Heap Sort</a></li>
+            <li><a href="r.html"class="active">Radix Sort</a></li>
+            <li><a href="#" class="active">Counting Sort</a></li>
+            <li><a href="q.html">Quick Sort</a></li>
+            <li><a href="b.html">Bubble Sort</a></li>
+            <li><a href="s.html">Selection Sort</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Interactive Radix Sort Visualization</h1>
+        <div class="controls">
+            <input type="text" id="number-input" placeholder="Enter a number">
+            <button onclick="addElement()">Add Element</button>
+            <button onclick="removeElement()">Remove Last Element</button>
+            <button onclick="generateRandomArray()">Generate Random Array</button>
+            <button onclick="clearArray()">Clear Array</button>
+            <button onclick="startSort()">Start Sort</button>
+            <div class="speed-control">
+                <label for="speed-slider">Speed:</label>
+                <input type="range" id="speed-slider" min="1" max="100" value="50">
+            </div>
+        </div>
+        <div class="step-controls">
+            <button onclick="stepBackward()" id="step-back">Step Back</button>
+            <button onclick="stepForward()" id="step-forward">Step Forward</button>
+        </div>
+        <div id="array-container"></div>
+        <div id="message-box"></div>
+    </div>
+
+    <script src="r.js"></script>
+</body>
+</html>

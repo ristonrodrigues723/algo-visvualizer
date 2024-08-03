@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubly Linked List Visualization</title>
+    <link rel="stylesheet" href="doubly.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">DataStructures</a>
+            <ul class="nav-links">
+                <li><a href="\\\index.html">Home</a></li>
+                <li><a href="\index.html" >Singly Linked List</a></li>
+                <li><a href="#" class="active">Doubly Linked List</a></li>
+              
+             
+         
+                <li><a href="circular.html">Circular Linked List</a></li>
+                <li><a href="doublycircular.html">Doubly Circular Linked List</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Doubly Linked List Visualization</h1>
+        <div id="linkedList" class="linked-list"></div>
+        <div class="controls">
+            <input type="number" id="valueInput" placeholder="Enter value">
+            <button onclick="addNode()">Add Node</button>
+            <button onclick="removeNode()">Remove Last</button>
+            <button onclick="generateRandomList()">Generate Random List</button>
+            <button onclick="clearList()">Clear List</button>
+            <input type="number" id="randomSizeInput" placeholder="Random list size" min="1" max="8" value="5">
+        </div>
+        <div id="messageBox"></div>
+    </div>
+    <script src="doubly.js"></script>
+</body>
+</html>
