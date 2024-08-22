@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sudoku Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+nav {
+            background-color: #333;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        nav li {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        nav li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: white;
+            box-shadow: 8px 8px 20px rgb(128, 128, 128);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            margin: 80px auto 20px;
+        }
+
+        .heading {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #sudoku {
+            border: 2px solid #333;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        #sudoku td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #999;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        #sudoku td:nth-child(3n) {
+            border-right: 2px solid #333;
+        }
+        #sudoku tr:nth-child(3n) td {
+            border-bottom: 2px solid #333;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button, select {
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        select {
+            background-color: white;
+            color: #333;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+        }
+        .option label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="\index.html">Home</a></li>
+            <li><a href="s.html" class="active">Sudoku Solver</a></li>
+            <li><a href="graph2.html">Graph Traversak</a></li>
+            <li><a href="index.html">BFS</a></li>
+            <li><a href="dfs.html" >DFS</a></li>
+            <li><a href="div1.html" >Brute Force</a></li>
+            <li><a href="d.html" >Divide and Conquer</a></li>
+
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Sudoku Solver</h1>
+        <table id="sudoku"></table>
+        <div class="controls">
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button onclick="generatePuzzle()">Generate Puzzle</button>
+            <button onclick="visualSolve()">Solve</button>
+            <button onclick="quickSolve()">Quick Solve</button>
+        </div>
+        <div class="options">
+            <div class="option">
+                <label for="speed">Speed:</label>
+                <select id="speed">
+                    <option value="fast">Fast</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="slow">Slow</option>
+                </select>
+            </div>
+            <div class="option">
+                <label for="animation">Animation:</label>
+                <select id="animation">
+                    <option value="on" selected>On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script>
+        const board = Array(9).fill().map(() => Array(9).fill(0));
+        let solving = false;
+        let currentAlgorithm = 'backtracking';
+
+        function setAlgorithm(algorithm) {
+            currentAlgorithm = algorithm;
+            alert(`Algorithm set to ${algorithm}. Note: BFS and DFS are not yet implemented.`);
+        }
+
+        function generatePuzzle() {
+            clearBoard();
+            fillDiagonal();
+            solveSudoku(board);
+            removeCells();
+            updateBoard();
+        }
+
+        function clearBoard() {
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    board[i][j] = 0;
+                }
+            }
+        }
+
+        function fillDiagonal() {
+            for (let i = 0; i < 9; i += 3) {
+                fillBox(i, i);
+            }
+        }
+
+        function fillBox(row, col) {
+            const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    let num;
+                    do {
+                        num = nums.splice(Math.floor(Math.random() * nums.length), 1)[0];
+                    } while (!isSafe(row + i, col + j, num));
+                    board[row + i][col + j] = num;
+                }
+            }
+        }
+
+        function removeCells() {
+            const difficulty = document.getElementById("difficulty").value;
+            const cellsToRemove = difficulty === "easy" ? 30 : difficulty === "medium" ? 40 : 50;
+            for (let i = 0; i < cellsToRemove; i++) {
+                let row, col;
+                do {
+                    row = Math.floor(Math.random() * 9);
+                    col = Math.floor(Math.random() * 9);
+                } while (board[row][col] === 0);
+                board[row][col] = 0;
+            }
+        }
+
+        async function visualSolve() {
+            if (solving) return;
+            solving = true;
+            if (await visualSolveSudoku(board)) {
+                updateBoard();
+            } else {
+                alert("No solution exists");
+            }
+            solving = false;
+        }
+
+        function quickSolve() {
+            if (solveSudoku(board)) {
+                updateBoard();
+            } else {
+                alert("No solution exists");
+            }
+        }
+
+        async function visualSolveSudoku(board) {
+            const emptyCell = findEmptyCell(board);
+            if (!emptyCell) return true;
+
+            const [row, col] = emptyCell;
+            const speed = getSpeed();
+            const animate = document.getElementById("animation").value === "on";
+
+            for (let num = 1; num <= 9; num++) {
+                if (isSafe(row, col, num)) {
+                    board[row][col] = num;
+                    if (animate) {
+                        updateCell(row, col, num);
+                        await new Promise(resolve => setTimeout(resolve, speed));
+                    }
+
+                    if (await visualSolveSudoku(board)) {
+                        return true;
+                    }
+
+                    board[row][col] = 0;
+                    if (animate) {
+                        updateCell(row, col, 0);
+                        await new Promise(resolve => setTimeout(resolve, speed));
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        function solveSudoku(board) {
+            const emptyCell = findEmptyCell(board);
+            if (!emptyCell) return true;
+
+            const [row, col] = emptyCell;
+
+            for (let num = 1; num <= 9; num++) {
+                if (isSafe(row, col, num)) {
+                    board[row][col] = num;
+
+                    if (solveSudoku(board)) {
+                        return true;
+                    }
+
+                    board[row][col] = 0;
+                }
+            }
+
+            return false;
+        }
+
+        function findEmptyCell(board) {
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    if (board[i][j] === 0) {
+                        return [i, j];
+                    }
+                }
+            }
+            return null;
+        }
+
+        function isSafe(row, col, num) {
+            return (
+                isRowSafe(row, num) &&
+                isColSafe(col, num) &&
+                isBoxSafe(row - row % 3, col - col % 3, num)
+            );
+        }
+
+        function isRowSafe(row, num) {
+            return !board[row].includes(num);
+        }
+
+        function isColSafe(col, num) {
+            return !board.map(row => row[col]).includes(num);
+        }
+
+        function isBoxSafe(boxRow, boxCol, num) {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[boxRow + i][boxCol + j] === num) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function updateBoard() {
+            const table = document.getElementById("sudoku");
+            table.innerHTML = "";
+            for (let i = 0; i < 9; i++) {
+                const row = table.insertRow();
+                for (let j = 0; j < 9; j++) {
+                    const cell = row.insertCell();
+                    cell.textContent = board[i][j] || "";
+                }
+            }
+        }
+
+        function updateCell(row, col, value) {
+            const table = document.getElementById("sudoku");
+            const cell = table.rows[row].cells[col];
+            cell.textContent = value || "";
+            cell.style.backgroundColor = value ? "#e6ffe6" : "";
+            setTimeout(() => {
+                cell.style.backgroundColor = "";
+            }, 300);
+        }
+
+        function getSpeed() {
+            const speed = document.getElementById("speed").value;
+            switch (speed) {
+                case "fast":
+                    return 10;
+                case "medium":
+                    return 50;
+                case "slow":
+                    return 200;
+                default:
+                    return 50;
+            }
+        }
+
+        // Initialize the board
+        updateBoard();
+    </script>
+</body>
+</html>

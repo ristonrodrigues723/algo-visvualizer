@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divide and Conquer Visualization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        nav {
+            background-color: #333;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        nav li {
+            flex-grow: 1;
+            text-align: center;
+        }
+        nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        nav li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 8px 8px 20px rgb(128, 128, 128);
+            border-radius: 20px;
+        }
+        #array-container {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .array-element {
+            width: 30px;
+            margin: 0 2px;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            color: white;
+            font-size: 12px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button, select {
+            padding: 10px;
+            margin: 0 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        select {
+            background-color: white;
+            color: #333;
+        }
+        #speed-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #speed-control label {
+            margin-right: 10px;
+        }
+        #info {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="s.html">Sudoku Solver</a></li>
+            <li><a href="graph2.html">Graph Traversal</a></li>
+            <li><a href="index.html">BFS</a></li>
+            <li><a href="dfs.html">DFS</a></li>
+            <li><a href="div1.html" >Brute Force</a></li>
+            <li><a href="#" class="active">Divide and Conquer</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Divide and Conquer Visualization</h1>
+        <div id="array-container"></div>
+        <div class="controls">
+            <button id="generate">Generate New Array</button>
+            <button id="sort">Sort Array</button>
+            <select id="array-size">
+                <option value="10">10 elements</option>
+                <option value="20" selected>20 elements</option>
+                <option value="30">30 elements</option>
+                <option value="40">40 elements</option>
+            </select>
+        </div>
+        <div id="speed-control">
+            <label for="speed">Speed:</label>
+            <input type="range" id="speed" min="1" max="10" value="5">
+        </div>
+        <div id="info"></div>
+    </div>
+    <script>
+        const arrayContainer = document.getElementById('array-container');
+        const generateButton = document.getElementById('generate');
+        const sortButton = document.getElementById('sort');
+        const arraySizeSelect = document.getElementById('array-size');
+        const speedControl = document.getElementById('speed');
+        const infoDiv = document.getElementById('info');
+        let array = [];
+        let speed = 5;
+
+        function generateRandomArray(size = 20, max = 100) {
+            return Array.from({length: size}, () => Math.floor(Math.random() * max) + 1);
+        }
+
+        function displayArray(arr, start = 0, end = arr.length - 1, color = '#3498db') {
+            arrayContainer.innerHTML = '';
+            arr.forEach((value, index) => {
+                const element = document.createElement('div');
+                element.className = 'array-element';
+                element.style.height = `${value * 2}px`;
+                element.textContent = value;
+                if (index >= start && index <= end) {
+                    element.style.backgroundColor = color;
+                }
+                arrayContainer.appendChild(element);
+            });
+        }
+
+        async function mergeSort(arr, start = 0, end = arr.length - 1) {
+            if (start >= end) return;
+
+            const mid = Math.floor((start + end) / 2);
+            
+            // Visualize division
+            displayArray(arr, start, mid, '#e74c3c');
+            infoDiv.textContent = `Dividing: [${start}, ${mid}]`;
+            await new Promise(resolve => setTimeout(resolve, 1000 / speed));
+            displayArray(arr, mid + 1, end, '#2ecc71');
+            infoDiv.textContent = `Dividing: [${mid + 1}, ${end}]`;
+            await new Promise(resolve => setTimeout(resolve, 1000 / speed));
+
+            await mergeSort(arr, start, mid);
+            await mergeSort(arr, mid + 1, end);
+            await merge(arr, start, mid, end);
+
+            // Visualize merged part
+            displayArray(arr, start, end, '#f39c12');
+            infoDiv.textContent = `Merged: [${start}, ${end}]`;
+            await new Promise(resolve => setTimeout(resolve, 1000 / speed));
+        }
+
+        async function merge(arr, start, mid, end) {
+            let left = arr.slice(start, mid + 1);
+            let right = arr.slice(mid + 1, end + 1);
+            let i = 0, j = 0, k = start;
+
+            while (i < left.length && j < right.length) {
+                if (left[i] <= right[j]) {
+                    arr[k] = left[i];
+                    i++;
+                } else {
+                    arr[k] = right[j];
+                    j++;
+                }
+                k++;
+                displayArray(arr);
+                infoDiv.textContent = `Merging: [${start}, ${end}]`;
+                await new Promise(resolve => setTimeout(resolve, 100 / speed));
+            }
+
+            while (i < left.length) {
+                arr[k] = left[i];
+                i++;
+                k++;
+                displayArray(arr);
+                infoDiv.textContent = `Merging: [${start}, ${end}]`;
+                await new Promise(resolve => setTimeout(resolve, 100 / speed));
+            }
+
+            while (j < right.length) {
+                arr[k] = right[j];
+                j++;
+                k++;
+                displayArray(arr);
+                infoDiv.textContent = `Merging: [${start}, ${end}]`;
+                await new Promise(resolve => setTimeout(resolve, 100 / speed));
+            }
+        }
+
+        generateButton.addEventListener('click', () => {
+            const size = parseInt(arraySizeSelect.value);
+            array = generateRandomArray(size);
+            displayArray(array);
+            infoDiv.textContent = `Generated new array with ${size} elements`;
+        });
+
+        sortButton.addEventListener('click', async () => {
+            sortButton.disabled = true;
+            generateButton.disabled = true;
+            await mergeSort(array);
+            sortButton.disabled = false;
+            generateButton.disabled = false;
+            infoDiv.textContent = 'Sorting completed';
+        });
+
+        arraySizeSelect.addEventListener('change', () => {
+            const size = parseInt(arraySizeSelect.value);
+            array = generateRandomArray(size);
+            displayArray(array);
+            infoDiv.textContent = `Generated new array with ${size} elements`;
+        });
+
+        speedControl.addEventListener('input', () => {
+            speed = parseInt(speedControl.value);
+        });
+
+        // Initial array generation
+        array = generateRandomArray();
+        displayArray(array);
+        infoDiv.textContent = 'Generated initial array';
+    </script>
+</body>
+</html>s
