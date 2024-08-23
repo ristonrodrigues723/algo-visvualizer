@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divide and Conquer Visualization</title>
     <style>
-        body {
+          body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
         }
-        nav {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+nav {
             background-color: #333;
             width: 100%;
             position: fixed;
@@ -19,6 +25,7 @@
             left: 0;
             z-index: 1000;
         }
+
         nav ul {
             list-style-type: none;
             margin: 0;
@@ -26,10 +33,12 @@
             display: flex;
             justify-content: flex-start;
         }
+
         nav li {
             flex-grow: 1;
             text-align: center;
         }
+
         nav li a {
             display: block;
             color: white;
@@ -37,13 +46,63 @@
             padding: 14px 16px;
             text-decoration: none;
         }
+
         nav li a:hover {
             background-color: #ddd;
             color: black;
         }
+
         nav li a.active {
             background-color: #4CAF50;
             color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: white;
+            box-shadow: 8px 8px 20px rgb(128, 128, 128);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            margin: 80px auto 20px;
+        }
+
+        .heading {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
         .container {
             max-width: 800px;
