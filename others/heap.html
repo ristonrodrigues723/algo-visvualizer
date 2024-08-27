@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Heap Sort Visualization</title>
+    <link rel="stylesheet" href="h.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="others/m.html">Merge Sort</a></li>
+            <li><a href="others/i.html">Insertion Sort</a></li>
+            <li><a href="\index.html"class="active">Heap Sort</a></li>
+            <li><a href="others/r.html">Radix Sort</a></li>
+            <li><a href="others/c.html">Counting Sort</a></li>
+            <li><a href="others/q.html">Quick Sort</a></li>
+            <li><a href="others/b.html">Bubble Sort</a></li>
+            <li><a href="others/s.html">Selection Sort</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="title">Interactive Heap Sort Visualization</h1>
+        <div class="container-header">
+            <div class="input-controls">
+                <input type="number" id="arraySize" min="5" max="20" value="10" placeholder="Array size (5-20)">
+                <button id="randomButton" onclick="generateRandomNumbers()">Generate Random Numbers</button>
+                <button id="initButton" onclick="initializeHeap()">Initialize Heap</button>
+                <button id="sortButton" onclick="startSort()" disabled>Sort Heap</button>
+                <button id="resetButton" onclick="reset()" disabled>Reset</button>
+            </div>
+            <div class="input-controls">
+                <input type="number" id="newNumber" placeholder="Enter a number">
+                <button id="addButton" onclick="addNumber()">Add Number</button>
+                <button id="removeButton" onclick="removeNumber()">Remove Number</button>
+            </div>
+        </div>
+        <div id="bar-container"></div>
+        <div id="number-container"></div>
+        <div class="message-box">
+            <h2>Messages</h2>
+            <div id="messageList" class="message-list"></div>
+        </div>
+        <div id="stats">
+            <p>Comparisons: <span id="comparisons">0</span></p>
+            <p>Swaps: <span id="swaps">0</span></p>
+        </div>
+    </div>
+    <script src="h.js"></script>
+</body>
+</html>
