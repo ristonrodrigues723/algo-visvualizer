@@ -49,4 +49,5 @@ Data Structures Section: Offers detailed explanations and interactive visualizat
 Algorithms Section: Provides a categorized list of algorithms with interactive visualizations and explanations.
 About Us Section: Introduces the development team and their vision for the project.
 Contribute Section: Encourages users to contribute to the project's growth.
+https://ristonrodrigues723.github.io/algo-visvualizer/
 Footer: Includes copyright information and links.
